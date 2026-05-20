@@ -20,7 +20,7 @@ public class Medicine {
 	private String note; // 価格
 	private Integer count;
 	@Column(name = "m_check")
-	private Boolean mCheck;
+	private Boolean mCheck = false;
 
 	@ManyToOne
 	@JoinColumn(name = "users_id")
@@ -73,6 +73,21 @@ public class Medicine {
 
 	public void setUser(Users user) {
 		this.user = user;
+	}
+
+	//	デフォルトコンストラクタ
+	public Medicine() {
+
+	}
+
+	//	薬の新規追加のコンストラクタ
+	public Medicine(String name, String note, Integer count, Boolean mCheck) {
+		if (mCheck == null) {
+			this.name = name;
+			this.note = note;
+			this.count = count;
+			mCheck = false;
+		}
 	}
 
 }
