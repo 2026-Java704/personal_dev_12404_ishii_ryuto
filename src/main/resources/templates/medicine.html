@@ -5,6 +5,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-a
+<h1>服薬一覧</h1>
+<span th:text="${@account.name}+' さんがログイン中'"></span>
+<table border="1">
+	<tr>
+		<th>NO</th>
+		<th>お薬名</th>
+		<th>個数</th>
+		<th>飲んだかどうか</th>
+		<th>備考</th>
+		<th>更新</th>
+		<th>削除</th>
+	</tr>
+	<tr th:each="medicine:${medicineList}">
+					<td th:text="${medicine.id}"></td>
+					<td th:text="${medicine.name}"></td>
+					<td th:text="${medicine.count}"></td>
+					<td th:text="${medicine.mCheck}"></td>
+					<td th:text="${medicine.note}"></td>
+					<td><button>更新</button></td>
+					<td><button>削除</button></td>
+</table>
 </body>
 </html>
