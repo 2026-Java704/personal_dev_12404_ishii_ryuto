@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 <header th:replace="~{header}"></header>
-	
+<hr>	
+<main>
 <h1>服薬一覧</h1>
-
+<p>お薬の情報の更新や飲んだ記録をしたい場合は更新ボタンを押してください。<br>
+注意：この画面では情報の変更はできません。</p>
 <table border="1">
 	<tr>
 		<th>NO</th>
@@ -24,8 +27,13 @@
 					<td th:text="${medicine.name}"></td>
 					<td th:text="${medicine.count}"></td>
 					<td>
-					<input type="checkbox" name="mCheck" value="true" th:checked="${medicine.mCheck == true}"> 済
-					<input type="checkbox" name="mCheck" value="false" th:checked="${medicine.mCheck == false}"> 未済
+					<label class="checkbox">
+					<input class="checkbox_icon" type="checkbox" name="mCheck" value="true" th:checked="${medicine.mCheck == true}"　disabled> 済
+					</label>
+					
+					<label class="checkbox">
+					<input class="checkbox_icon" type="checkbox" name="mCheck" value="false" th:checked="${medicine.mCheck == false}"　disabled> 未済
+					</label>
 					</td>
 					
 					<td th:text="${medicine.note}"></td>
@@ -41,5 +49,8 @@
 <form action ="/medicine/add" method="get">
 	<button>新規追加</button>
 </form>
+</main>
+<hr>
+	<footer th:replace="footer"></footer>
 </body>
 </html>

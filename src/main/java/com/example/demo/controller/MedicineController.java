@@ -36,7 +36,7 @@ public class MedicineController {
 	public String show(
 			Model model) {
 
-		List<Medicine> medicineList = medicineRepository.findByUserId(account.getId());
+		List<Medicine> medicineList = medicineRepository.findByUserIdOrderById(account.getId());
 		model.addAttribute("medicineList", medicineList);
 
 		return "medicine";

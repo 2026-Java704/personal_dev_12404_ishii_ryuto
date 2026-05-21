@@ -3,32 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 	<header th:replace="~{header}"></header>
+	<hr>
+	
+	<main>
 	<h1>薬の新規登録</h1>
 	<form action="/medicine/add" method="post">
 	<table border="1">
 		<tr>
 			<th>お薬名</th>
 			<td>
-				<input type="text" name="name">
+				<input type="text" name="name" placeholder="お薬名">
 			</td>
 		</tr>
 		<tr>
 			<th>個数</th>
 			<td>
-				<input type=" number" name="count">
+				<input type=" number" name="count" placeholder="数字のみ入力してください">
 			</td>
 		</tr>
 		<tr>
 			<th>備考</th>
 			<td>
-				<input type="text" name="note">
+				<input type="text" name="note" placeholder="備考 ex)1日何錠など">
 			</td>
 		</tr>
 	</table>
 	<button>追加</button>
 	</form>
+	</main>
+	<hr>
+		<footer th:replace="footer"></footer>
 </body>
 </html>

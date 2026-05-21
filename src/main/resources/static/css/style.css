@@ -1,0 +1,132 @@
+@charset "UTF-8";
+/* 全体 */
+body {
+	background-color: #CCCCFF; /* 背景色  */
+	text-align: center; /* 中央寄せ */
+    min-width: 900px; /* 最小幅 */
+}
+/* ヘッダー、ナビゲーションメニュー、フッター */
+header, nav, footer {
+	background-color: #9999CC; /* 背景色 */
+	color: #ffffff; /* 文字色 */
+	padding-top: 5px; /* 内側余白(上) */
+	padding-bottom: 5px; /* 内側余白(下) */
+}
+/* ヘッダー、ナビゲーション内リンク */
+header a, nav a {
+	color: #ffffff;
+}
+/* ヘッダー内見出し */
+header h1 {
+	font-size: 25pt;
+	margin: 10px auto;
+}
+
+h1 {
+	font-size: 20pt;
+	margin: 10px auto;
+}
+
+/* 仕切り線 */
+hr {
+	border-top: 1px dashed #7d8bae;
+}
+/* メイン */
+main {
+	background-color: #FFFFCC;
+	min-height: 50px;
+	padding: 20px;
+}
+/* 表線 */
+table, th, td {
+	border-collapse: collapse;
+	border: 1px solid #7d8bae;
+}
+/* 表 */
+table {
+    margin: 5px auto;
+    min-width: 800px;
+}
+/* 表見出しセル */
+table th {
+	background: #7d8bae;
+	color: #ffffff;
+}
+/* 送信ボタン */
+button {
+	margin: 2px;
+	padding: 5px 20px;
+	background-color: #99FF99;
+	color: #ffffff;
+	border: none;
+	width:150px;
+	cursor: pointer;
+}
+/* 送信ボタン(マウスオーバー時) */
+button:hover {
+	background-color: #CCFF99;
+}
+/* エラーメッセージ */
+ul.error {
+	color: red;
+	list-style: none;
+	padding-left: 0;
+}
+
+/*消す可能性高いチェックボックス*/
+/* チェックボックス全体 */
+.checkbox {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: auto 1fr; /* auto はアイコン、1fr はラベル文字列を想定 */
+  gap: 10px;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #404040;
+  
+  /* チェックボックス全体：非活性の見た目 */
+  &:has(.checkbox_icon:disabled) {
+    opacity: 0.4;
+  }
+}
+
+/* チェックボックスのアイコン */
+.checkbox_icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  appearance: none;
+  background: #FFFFFF;
+  border: solid 2px #808080;
+  border-radius: 4px;
+  box-shadow: 0 0 0 0 transparent;
+
+  /* チェックマーク */
+  &::before {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: "";
+    opacity: 0;
+    mask-image: url("icon.svg");
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    background-color: #FFFFFF;
+  }
+  
+  /* アイコン：選択済みの見た目 */
+   &:checked {
+     background: #3223B3; /* 紫色 */
+     border-color: #3223B3; /* 紫色 */
+   }
+
+   /* チェックマーク：選択済みの見た目 */
+   &:checked::before {
+     opacity: 1;
+   }
+}
+
