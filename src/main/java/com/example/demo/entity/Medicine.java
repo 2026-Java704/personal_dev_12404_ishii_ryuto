@@ -81,13 +81,14 @@ public class Medicine {
 	}
 
 	//	薬の新規追加のコンストラクタ
-	public Medicine(String name, String note, Integer count, Boolean mCheck) {
+	public Medicine(String name, String note, Integer count, Boolean mCheck, Users users) {
+		this.name = name;
+		this.note = note;
+		this.count = count;
 		if (mCheck == null) {
-			this.name = name;
-			this.note = note;
-			this.count = count;
 			mCheck = false;
 		}
+		this.user = users;
 	}
 
 }

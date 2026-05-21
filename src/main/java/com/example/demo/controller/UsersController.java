@@ -32,7 +32,7 @@ public class UsersController {
 	}
 
 	//	ログイン画面表示
-	@GetMapping("/login")
+	@GetMapping({ "/login", "/logout" })
 	public String index() {
 		//		セッション情報のクリア
 		session.invalidate();

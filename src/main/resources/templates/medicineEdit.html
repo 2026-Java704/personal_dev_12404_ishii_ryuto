@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="~{header}"></header>
+	<h1>薬の更新</h1>
+		<form th:action="'/medicine/'+${medicine.id}+'/edit'" method="post">
+		<table border="1">
+			<tr>
+				<th>No</th>
+				<td th:text="${medicine.id}"></td>
+			</tr>
+			<tr>
+				<th>お薬名</th>
+				<td>
+					<input type="text" name="name" th:value="${medicine.name}">
+				</td>
+			</tr>
+			<tr>
+				<th>個数</th>
+				<td>
+					<input type=" number" name="count" th:value="${medicine.count}">
+				</td>
+			</tr>
+			<tr>
+				<th>飲んだかどうか</th>
+				<td>
+				    <input type="checkbox" name="mCheck" value="true" th:checked="${medicine.mCheck == true}"> 済
+				    <input type="checkbox" name="mCheck" value="false" th:checked="${medicine.mCheck == false}"> 未済
+				 </td>
+			</tr>
+			<tr>
+				<th>備考</th>
+				<td>
+					<input type="text" name="note" th:value="${medicine.note}">
+				</td>
+			</tr>
+		</table>
+		<button>追加</button>
+		</form>
+</body>
+</html>

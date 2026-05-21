@@ -5,25 +5,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header th:replace="~{header}"></header>
 	<h1>薬の新規登録</h1>
 	<form action="/medicine/add" method="post">
 	<table border="1">
 		<tr>
 			<th>お薬名</th>
 			<td>
-				<input type="text" name="name" th:value="${name}">
+				<input type="text" name="name">
 			</td>
 		</tr>
 		<tr>
 			<th>個数</th>
 			<td>
-				<input type=" number" name="count" th:value="${count}">
+				<input type=" number" name="count">
 			</td>
 		</tr>
 		<tr>
 			<th>備考</th>
 			<td>
-				<input type="text" name="note" th:value="${note}">
+				<input type="text" name="note">
 			</td>
 		</tr>
 	</table>
