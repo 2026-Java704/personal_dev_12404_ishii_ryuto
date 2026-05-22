@@ -12,6 +12,14 @@
 <h1>服薬一覧</h1>
 <p>お薬の情報の更新や飲んだ記録をしたい場合は更新ボタンを押してください。<br>
 注意：この画面では情報の変更はできません。</p>
+
+
+<form action="/medicine/search" method="get">
+	<a>お薬検索：</a>
+	<input type="text" name="name" >で
+	<button>検索</button>
+</form>
+
 <table border="1">
 	<tr>
 		<th>NO</th>
@@ -43,8 +51,9 @@
 					</form>
 					
 					<form th:action="'/medicine/'+${medicine.id}+'/delete'" method="post">
-										<td><button>削除</button></td>
-										</form>
+					<td><button>削除</button></td>
+					</form>
+	</tr>
 </table>
 <form action ="/medicine/add" method="get">
 	<button>新規追加</button>

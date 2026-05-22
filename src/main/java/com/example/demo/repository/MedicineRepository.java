@@ -11,4 +11,6 @@ public interface MedicineRepository extends JpaRepository<Medicine, Integer> {
 	List<Medicine> findByUserId(Integer usersId);
 
 	List<Medicine> findByUserIdOrderById(Integer usersId);
+
+	List<Medicine> findByNameContainingAndUserId(String name, Integer usersId);
 }

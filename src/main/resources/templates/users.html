@@ -13,7 +13,7 @@
 	<main>
 	<form action ="/login" method="post">
 	<input type ="text" name="name" placeholder="ユーザー名"><br>
-	<input type ="text" name="password" placeholder="パスワード"><br>
+	<input type ="password" name="password" placeholder="パスワード"><br>
 	
 	<ul th:if="${errorList}" >
 		<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>

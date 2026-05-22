@@ -36,6 +36,12 @@ public class MedicineController {
 	public String show(
 			Model model) {
 
+		//		未ログインユーザーをログイン画面へ
+		if (account.getId() == null) {
+			return "redirect:/login";
+		}
+
+		//		ユーザーに応じた薬一覧の表示
 		List<Medicine> medicineList = medicineRepository.findByUserIdOrderById(account.getId());
 		model.addAttribute("medicineList", medicineList);
 
@@ -45,6 +51,12 @@ public class MedicineController {
 	//	薬の新規登録画面の表示
 	@GetMapping("/medicine/add")
 	public String medicineShow() {
+
+		//		未ログインユーザーをログイン画面へ
+		if (account.getId() == null) {
+			return "redirect:/login";
+		}
+
 		return "medicineAdd";
 	}
 
@@ -69,7 +81,17 @@ public class MedicineController {
 	@GetMapping("/medicine/{id}/edit")
 	public String edit(@PathVariable Integer id, Model model) {
 
+		//		未ログインユーザーをログイン画面へ
+		if (account.getId() == null) {
+			return "redirect:/login";
+		}
+
 		Medicine medicine = medicineRepository.findById(id).get();
+
+		// 他人の薬は編集画面を開けない
+		if (!medicine.getUser().getId().equals(account.getId())) {
+			return "redirect:/medicine";
+		}
 
 		model.addAttribute("medicine", medicine);
 
@@ -88,6 +110,11 @@ public class MedicineController {
 
 		Medicine medicine = medicineRepository.findById(id).get();
 
+		// 他人の薬は編集画面を開けない
+		if (!medicine.getUser().getId().equals(account.getId())) {
+			return "redirect:/medicine";
+		}
+
 		medicine.setName(name);
 		medicine.setCount(count);
 		medicine.setNote(note);
@@ -102,9 +129,33 @@ public class MedicineController {
 	@PostMapping("/medicine/{id}/delete")
 	public String delete(@PathVariable Integer id) {
 
+		//		未ログインユーザーをログイン画面へ
+		if (account.getId() == null) {
+			return "redirect:/login";
+		}
+
+		Medicine medicine = medicineRepository.findById(id).get();
+		// 他人の薬は編集画面を開けない
+		if (!medicine.getUser().getId().equals(account.getId())) {
+			return "redirect:/medicine";
+		}
+
 		medicineRepository.deleteById(id);
 
 		return "redirect:/";
+	}
+
+	//	追加機能
+	//	薬の検索
+	@GetMapping("/medicine/search")
+	public String search(
+			@RequestParam(defaultValue = "") String name,
+			Model model) {
+
+		List<Medicine> medicineList = medicineRepository.findByNameContainingAndUserId(name, account.getId());
+		model.addAttribute("medicineList", medicineList);
+
+		return "medicine";
 	}
 
 }

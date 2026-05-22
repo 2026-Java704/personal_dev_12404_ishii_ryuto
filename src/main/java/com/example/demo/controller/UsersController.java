@@ -91,6 +91,7 @@ public class UsersController {
 	public String add(
 			@RequestParam(defaultValue = "") String name,
 			@RequestParam(defaultValue = "") String password,
+			@RequestParam(defaultValue = "") String passwordconfirm,
 			Model model) {
 
 		List<String> errorList = new ArrayList<>();
@@ -100,6 +101,18 @@ public class UsersController {
 		if (password.length() == 0) {
 			errorList.add("パスワードは必須です");
 		}
+		if (passwordconfirm.length() == 0) {
+			errorList.add("パスワード確認は必須です");
+		}
+		if (!(password.equals(passwordconfirm))) {
+			errorList.add("パスワードが異なります");
+		}
+		//		重複ユーザーが出た場合の処理
+		List<Users> usersList = usersRepository.findByNameAndPassword(name, password);
+		if (usersList != null && usersList.size() > 0) {
+			errorList.add("登録済みのユーザーです");
+		}
+		//		エラーがあった場合その分表示
 		if (errorList.size() > 0) {
 			model.addAttribute("errorList", errorList);
 			return "usersAdd";
