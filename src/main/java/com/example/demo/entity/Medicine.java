@@ -22,6 +22,8 @@ public class Medicine {
 	@Column(name = "m_check")
 	private Boolean mCheck = false;
 
+	//	private LocalDate date;
+
 	@ManyToOne
 	@JoinColumn(name = "users_id")
 	private Users user;
@@ -74,6 +76,14 @@ public class Medicine {
 	public void setUser(Users user) {
 		this.user = user;
 	}
+
+	//	public LocalDate getDate() {
+	//		return date;
+	//	}
+	//
+	//	public void setDate(LocalDate date) {
+	//		this.date = date;
+	//	}
 
 	//	デフォルトコンストラクタ
 	public Medicine() {

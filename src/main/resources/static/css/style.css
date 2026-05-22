@@ -1,16 +1,23 @@
 @charset "UTF-8";
 /* 全体 */
 body {
-	background-color: #CCCCFF; /* 背景色  */
+	background-color: white; /* 背景色  */
 	text-align: center; /* 中央寄せ */
     min-width: 900px; /* 最小幅 */
 }
 /* ヘッダー、ナビゲーションメニュー、フッター */
 header, nav, footer {
-	background-color: #99FF66	; /* 背景色 */
-	color: #ffffff; /* 文字色 */
-	padding-top: 5px; /* 内側余白(上) */
-	padding-bottom: 5px; /* 内側余白(下) */
+	all: unset !important;
+	display: block !important;
+	font-size: 22px !important;
+	font-weight: bold !important;
+	background: repeating-linear-gradient(-45deg, rgb(71, 84, 156), #7d8bae 10px, #7d8bae 10px, rgb(71, 84, 156) 20px) !important;
+	padding: 10px !important;
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	color: white !important;
+	border-radius: 5px !important;
+	
 }
 /* ヘッダー、ナビゲーション内リンク */
 header a, nav a {
