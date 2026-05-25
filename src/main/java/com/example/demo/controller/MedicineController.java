@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -74,6 +75,18 @@ public class MedicineController {
 
 		Medicine medicine = new Medicine(name, note, count, mCheck, users);
 		medicineRepository.save(medicine);
+
+		List<String> errorList = new ArrayList<>();
+		if (name.length() == 0) {
+			errorList.add("お薬名は必須です");
+		}
+		if (count == null) {
+			errorList.add("個数の入力は必須です");
+		}
+		if (errorList.size() > 0) {
+			model.addAttribute("errorList", errorList);
+			return "medicineAdd";
+		}
 
 		return "redirect:/";
 	}
