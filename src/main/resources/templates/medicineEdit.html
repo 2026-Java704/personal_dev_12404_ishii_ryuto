@@ -33,9 +33,15 @@
 			<tr>
 				<th>飲んだかどうか</th>
 				<td>
-				    <input type="checkbox" name="mCheck" value="true" th:checked="${medicine.mCheck == true}"> 済
-				    <input type="checkbox" name="mCheck" value="false" th:checked="${medicine.mCheck == false}"> 未済
+				    <input type="radio" name="mCheck" value="true" th:checked="${medicine.mCheck == true}"> 済
+				    <input type="radio" name="mCheck" value="false" th:checked="${medicine.mCheck == false}"> 未済
 				 </td>
+			</tr>
+			<tr>
+				<th>飲んだかどうか</th>
+				<td>
+					<input type="date" name="date" th:value="${medicine.date}"> 
+				</td>
 			</tr>
 			<tr>
 				<th>備考</th>

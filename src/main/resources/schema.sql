@@ -15,5 +15,6 @@ CREATE TABLE medicine (
 	note VARCHAR(500),
 	count INTEGER,
 	m_check boolean NOT NULL DEFAULT FALSE,
+	date DATE,
 	users_id INTEGER REFERENCES users(id)
 );

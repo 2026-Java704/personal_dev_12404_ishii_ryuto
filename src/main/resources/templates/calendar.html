@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
 <head>
 	<meta charset="UTF-8">
 	<title>カレンダー表示</title>
@@ -19,31 +20,31 @@
 		<span th:text="${@account.name}+' さんがログイン中'"></span>
 		<a href="/logout">ログアウト</a>
 	</header>
-	
+
 	<div id="calendar"></div>
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/locales-all.global.min.js"></script>
+	<script th:inline="javascript">
+		const calendarEvents = /*[[${calendarEvents}]]*/ [];
 
-	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			var calendarEl = document.getElementById('calendar');
 
 			var calendar = new FullCalendar.Calendar(calendarEl, {
 				initialView: 'dayGridMonth',
 				locale: 'ja',
-				events: [
-					{
-						
-					}
-				]
+				events: calendarEvents
 			});
+
 			calendar.render();
 		});
 	</script>
+	
 	<form action="/medicine" method="get">
 		<button>戻る</button>
 	</form>
 	<hr>
 	<footer th:replace="footer"></footer>
 </body>
+
 </html>

@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +24,7 @@ public class Medicine {
 	@Column(name = "m_check")
 	private Boolean mCheck = false;
 
-	//	private LocalDate date;
+	private LocalDate date;
 
 	@ManyToOne
 	@JoinColumn(name = "users_id")
@@ -69,6 +71,14 @@ public class Medicine {
 		this.mCheck = mCheck;
 	}
 
+	public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
 	public Users getUser() {
 		return user;
 	}
@@ -76,14 +86,6 @@ public class Medicine {
 	public void setUser(Users user) {
 		this.user = user;
 	}
-
-	//	public LocalDate getDate() {
-	//		return date;
-	//	}
-	//
-	//	public void setDate(LocalDate date) {
-	//		this.date = date;
-	//	}
 
 	//	デフォルトコンストラクタ
 	public Medicine() {

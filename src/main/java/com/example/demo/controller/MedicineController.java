@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -106,6 +107,7 @@ public class MedicineController {
 			@RequestParam(defaultValue = "") Integer count,
 			@RequestParam(defaultValue = "") String note,
 			@RequestParam(defaultValue = "") Boolean mCheck,
+			@RequestParam(defaultValue = "") LocalDate date,
 			Model model) {
 
 		Medicine medicine = medicineRepository.findById(id).get();
@@ -119,6 +121,7 @@ public class MedicineController {
 		medicine.setCount(count);
 		medicine.setNote(note);
 		medicine.setmCheck(mCheck);
+		medicine.setDate(date);
 
 		medicineRepository.save(medicine);
 
