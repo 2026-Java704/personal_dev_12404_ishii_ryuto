@@ -17,7 +17,7 @@
 
 <form action="/medicine/search" method="get">
 	<a>お薬検索：</a>
-	<input type="text" name="name" >で
+	<input type="text" name="name" maxlength="30" />で
 	<button>検索</button>
 </form>
 
@@ -28,6 +28,7 @@
 		<th>個数</th>
 		<th>飲んだかどうか</th>
 		<th>備考</th>
+		<th>時間帯</th>
 		<th>更新</th>
 		<th>削除</th>
 	</tr>
@@ -46,6 +47,8 @@
 					</td>
 					
 					<td th:text="${medicine.note}"></td>
+					
+					<td th:text="${medicine.dtime}"></td>
 					
 					<form th:action="'/medicine/'+${medicine.id}+'/edit'" method="get">
 					<td><button>更新</button></td>

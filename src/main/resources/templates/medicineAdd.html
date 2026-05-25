@@ -16,19 +16,35 @@
 		<tr>
 			<th>お薬名</th>
 			<td>
-				<input type="text" name="name" placeholder="お薬名">
+				<input type="text" name="name" placeholder="お薬名" maxlength="30" />
 			</td>
 		</tr>
 		<tr>
 			<th>個数</th>
 			<td>
-				<input type="number" name="count" placeholder="数字のみ入力してください">
+				<input type="number" name="count" placeholder="数字のみ入力してください" max="100" min="0"/>
 			</td>
 		</tr>
 		<tr>
 			<th>備考</th>
 			<td>
-				<input type="text" name="note" placeholder="備考 ex)1日何錠など">
+				<input type="text" name="note" placeholder="備考 ex)1日何錠など" maxlength="500" />
+			</td>
+		</tr>
+		<tr>
+			<th>服薬日</th>
+			<td>
+				<input type="date" name="date" th:value="${date}" required>
+			</td>
+		</tr>
+		<tr>
+			<th>飲んだ時間</th>
+			<td>
+				<select name="dtime">
+					<option value="朝">朝</option>
+					<option value="昼">昼</option>
+					<option value="晩">晩</option>
+				</select>
 			</td>
 		</tr>
 	</table>

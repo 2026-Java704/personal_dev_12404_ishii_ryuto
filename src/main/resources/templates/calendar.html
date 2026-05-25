@@ -33,7 +33,11 @@
 			var calendar = new FullCalendar.Calendar(calendarEl, {
 				initialView: 'dayGridMonth',
 				locale: 'ja',
-				events: calendarEvents
+				events: calendarEvents,
+				
+				dateClick: function(info) {
+								location.href = "/medicine/add?date=" + info.dateStr;
+				}
 			});
 
 			calendar.render();

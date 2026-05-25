@@ -46,7 +46,7 @@ public class CalendarController {
 			}
 
 			Map<String, String> event = new HashMap<>();
-			event.put("title", medic.getName() + "：" + status);
+			event.put("title", medic.getName() + "：" + medic.getDtime() + "：" + status);
 			event.put("start", medic.getDate().toString());
 
 			calendarEvents.add(event);
