@@ -119,6 +119,13 @@ public class MedicineController {
 
 		Medicine medicine = medicineRepository.findById(id).get();
 
+		List<String> dtimeList = new ArrayList<>();
+		dtimeList.add("朝");
+		dtimeList.add("昼");
+		dtimeList.add("晩");
+
+		model.addAttribute("dtimeList", dtimeList);
+
 		// 他人の薬は編集画面を開けない
 		if (!medicine.getUser().getId().equals(account.getId())) {
 			return "redirect:/medicine";

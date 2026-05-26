@@ -1,5 +1,18 @@
-<header>
-	<h1><a href="/medicine">お薬チェッくん</a></h1>
-	<span th:text="${@account.name}+' さんがログイン中'"></span>
-	<a href="/logout">ログアウト</a>
-</header>
+
+<header class="header01">
+           <h1 class="header01-logo"><a href="/medicine">お薬チェッくん</a></h1>
+
+           <nav class="header01-nav">
+               <ul class="header01-list">
+                   <li class="header01-item">
+					<span th:text="${@account.name}+' さんがログイン中'"></span>
+                   </li>
+                   <li class="header01-item">
+                       <a href="/calendar/show">お薬カレンダー</a>
+                   </li>
+                   <li class="header01-item">
+					<a href="/logout">ログアウト</a>
+                   </li>
+               </ul>
+           </nav>
+       </header>

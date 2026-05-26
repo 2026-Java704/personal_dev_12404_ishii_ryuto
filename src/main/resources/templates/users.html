@@ -3,27 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン画面</title>
+<link rel="stylesheet" type="text/css" href="/css/loginStyle.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-	<header>
-	<h1>ログイン</h1>
-	</header>
+	<div class="login-page">
+	  <div class="form">
+		<h1>お薬チェッくん</h1>
+	    <form class="login-form" action ="/login" method="post">
+	      <input type="text" name="name" placeholder="お名前"  maxlength="30"/>
+	      <input type="password"  name="password" placeholder="password" maxlength="500"/>
+		  <ul th:if="${errorList}" >
+		  	<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
+		  </ul>
+	      <button>login</button>
+		  </form>
+	      <p class="message">登録されてないですか？ <a href="/users/add">Create an account</a></p>
+	    </form>
+		<script>
+			$('.message a').click(function(){
+				 $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+			});
+		</script>
+	  </div>
+	</div>
+
 	
-	<main>
-	<form action ="/login" method="post">
-	<input type ="text" name="name" placeholder="ユーザー名"><br>
-	<input type ="password" name="password" placeholder="パスワード"><br>
 	
-	<ul th:if="${errorList}" >
-		<div th:each="error:${errorList}" th:text="${error}" style="color: red"></div>
-	</ul>
 	
-		<button>ログイン</button>
-	</form>
-	<a href="/users/add">新規登録</a>
-	</main>
-	<hr>
-	<footer th:replace="footer"></footer>
 </body>
 </html>
