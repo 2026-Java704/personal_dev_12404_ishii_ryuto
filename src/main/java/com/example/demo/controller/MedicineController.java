@@ -52,12 +52,16 @@ public class MedicineController {
 
 	//	薬の新規登録画面の表示
 	@GetMapping("/medicine/add")
-	public String medicineShow() {
+	public String medicineShow(
+			@RequestParam(required = false) LocalDate date,
+			Model model) {
 
 		//		未ログインユーザーをログイン画面へ
 		if (account.getId() == null) {
 			return "redirect:/login";
 		}
+
+		model.addAttribute("date", date);
 
 		return "medicineAdd";
 	}
@@ -69,12 +73,20 @@ public class MedicineController {
 			@RequestParam(defaultValue = "") Integer count,
 			@RequestParam(defaultValue = "") String note,
 			@RequestParam(defaultValue = "") Boolean mCheck,
+			@RequestParam LocalDate date,
+			@RequestParam(defaultValue = "") String dtime,
 			Model model) {
 
 		Users users = usersRepository.findById(account.getId()).get();
 
-		Medicine medicine = new Medicine(name, note, count, mCheck, users);
-		medicineRepository.save(medicine);
+		Medicine medicine = new Medicine(name, note, count, mCheck, date, dtime, users);
+
+		medicine.setName(name);
+		medicine.setCount(count);
+		medicine.setDate(date);
+		medicine.setNote(note);
+		medicine.setmCheck(false);
+		medicine.setDtime(dtime);
 
 		List<String> errorList = new ArrayList<>();
 		if (name.length() == 0) {
@@ -83,12 +95,17 @@ public class MedicineController {
 		if (count == null) {
 			errorList.add("個数の入力は必須です");
 		}
+		if (date == null) {
+			errorList.add("日付の入力は必須です");
+		}
 		if (errorList.size() > 0) {
 			model.addAttribute("errorList", errorList);
 			return "medicineAdd";
 		}
 
-		return "redirect:/";
+		medicineRepository.save(medicine);
+
+		return "redirect:/calendar/show";
 	}
 
 	//	薬の更新登録画面の表示
@@ -101,6 +118,13 @@ public class MedicineController {
 		}
 
 		Medicine medicine = medicineRepository.findById(id).get();
+
+		List<String> dtimeList = new ArrayList<>();
+		dtimeList.add("朝");
+		dtimeList.add("昼");
+		dtimeList.add("晩");
+
+		model.addAttribute("dtimeList", dtimeList);
 
 		// 他人の薬は編集画面を開けない
 		if (!medicine.getUser().getId().equals(account.getId())) {
@@ -121,6 +145,7 @@ public class MedicineController {
 			@RequestParam(defaultValue = "") String note,
 			@RequestParam(defaultValue = "") Boolean mCheck,
 			@RequestParam(defaultValue = "") LocalDate date,
+			@RequestParam(defaultValue = "") String dtime,
 			Model model) {
 
 		Medicine medicine = medicineRepository.findById(id).get();
@@ -135,6 +160,7 @@ public class MedicineController {
 		medicine.setNote(note);
 		medicine.setmCheck(mCheck);
 		medicine.setDate(date);
+		medicine.setDtime(dtime);
 
 		medicineRepository.save(medicine);
 

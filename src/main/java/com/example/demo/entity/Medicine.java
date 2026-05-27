@@ -26,6 +26,8 @@ public class Medicine {
 
 	private LocalDate date;
 
+	private String dtime;
+
 	@ManyToOne
 	@JoinColumn(name = "users_id")
 	private Users user;
@@ -79,6 +81,14 @@ public class Medicine {
 		this.date = date;
 	}
 
+	public String getDtime() {
+		return dtime;
+	}
+
+	public void setDtime(String dtime) {
+		this.dtime = dtime;
+	}
+
 	public Users getUser() {
 		return user;
 	}
@@ -93,13 +103,16 @@ public class Medicine {
 	}
 
 	//	薬の新規追加のコンストラクタ
-	public Medicine(String name, String note, Integer count, Boolean mCheck, Users users) {
+	public Medicine(String name, String note, Integer count, Boolean mCheck, LocalDate date, String dtime,
+			Users users) {
 		this.name = name;
 		this.note = note;
 		this.count = count;
 		if (mCheck == null) {
 			mCheck = false;
 		}
+		this.date = date;
+		this.dtime = dtime;
 		this.user = users;
 	}
 

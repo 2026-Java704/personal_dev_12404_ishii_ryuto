@@ -51,7 +51,7 @@ public class UsersController {
 		//		エラー処理
 		List<String> errorList = new ArrayList<>();
 		if (name.length() == 0) {
-			errorList.add("ユーザー名は必須です");
+			errorList.add("お名前は必須です");
 		}
 		if (password.length() == 0) {
 			errorList.add("パスワードは必須です");

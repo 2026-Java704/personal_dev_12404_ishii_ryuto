@@ -10,7 +10,7 @@
 	<hr>
 	
 	<main>
-	<h1>薬の更新</h1>
+	<h2 class="ttl_background6">薬の更新</h2>
 	<p>飲んだかどうかはどちらかを選択してください。</p>
 		<form th:action="'/medicine/'+${medicine.id}+'/edit'" method="post">
 		<table border="1">
@@ -21,13 +21,13 @@
 			<tr>
 				<th>お薬名</th>
 				<td>
-					<input type="text" name="name" th:value="${medicine.name}">
+					<input type="text" name="name" th:value="${medicine.name}" placeholder="お薬名" maxlength="20"/>
 				</td>
 			</tr>
 			<tr>
 				<th>個数</th>
 				<td>
-					<input type="number" name="count" th:value="${medicine.count}">
+					<input type="number" name="count" th:value="${medicine.count}" placeholder="数字のみ入力してください" max="100" min="0"/>
 				</td>
 			</tr>
 			<tr>
@@ -38,15 +38,23 @@
 				 </td>
 			</tr>
 			<tr>
-				<th>飲んだかどうか</th>
+				<th>飲んだ日付</th>
 				<td>
 					<input type="date" name="date" th:value="${medicine.date}"> 
 				</td>
 			</tr>
 			<tr>
+				<th>飲んだ時間</th>
+				<td>
+					<select name="dtime">
+						<option th:each="dtimeList:${dtimeList}" th:text="${dtimeList}" th:selected="${medicine.dtime==dtimeList}"></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
 				<th>備考</th>
 				<td>
-					<input type="text" name="note" th:value="${medicine.note}">
+					<input type="text" name="note" th:value="${medicine.note}" placeholder="備考 ex)1日何錠など" maxlength="500"/>
 				</td>
 			</tr>
 			<input type="hidden" name="mCheck" th:value="${medicine.mCheck}">

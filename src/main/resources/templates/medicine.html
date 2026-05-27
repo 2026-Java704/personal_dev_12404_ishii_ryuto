@@ -9,15 +9,14 @@
 <header th:replace="~{header}"></header>
 <hr>	
 <main>
-		<a href="/calendar/show">カレンダー</a>
-<h1>服薬一覧</h1>
+<h2 class="ttl_background6">服薬一覧</h2>
 <p>お薬の情報の更新や飲んだ記録をしたい場合は<span style="color: red;">更新ボタン</span>を押してください。<br>
 注意：この画面では情報の変更はできません。</p>
 
 
 <form action="/medicine/search" method="get">
 	<a>お薬検索：</a>
-	<input type="text" name="name" >で
+	<input type="text" name="name" maxlength="30" />で
 	<button>検索</button>
 </form>
 
@@ -28,6 +27,7 @@
 		<th>個数</th>
 		<th>飲んだかどうか</th>
 		<th>備考</th>
+		<th>時間帯</th>
 		<th>更新</th>
 		<th>削除</th>
 	</tr>
@@ -46,6 +46,8 @@
 					</td>
 					
 					<td th:text="${medicine.note}"></td>
+					
+					<td th:text="${medicine.dtime}"></td>
 					
 					<form th:action="'/medicine/'+${medicine.id}+'/edit'" method="get">
 					<td><button>更新</button></td>

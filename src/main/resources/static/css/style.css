@@ -5,11 +5,33 @@ body {
 	text-align: center; /* 中央寄せ */
     min-width: 900px; /* 最小幅 */
 }
+.header01 {
+    padding: 16px 24px;
+	background: repeating-linear-gradient(-45deg, rgb(71, 84, 156), #7d8bae 10px, #7d8bae 10px, rgb(71, 84, 156) 20px) !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	border-radius: 5px !important;
+}
+
+.header01-logo {
+    font-weight: bold;
+    font-size: 25px;
+	color: #ffffff;
+}
+
+.header01-list {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-weight: bold;
+	color: #ffffff;
+}
 /* ヘッダー、ナビゲーションメニュー、フッター */
-header, nav, footer {
+ footer {
 	all: unset !important;
 	display: block !important;
-	font-size: 22px !important;
+	font-size: 15px !important;
 	font-weight: bold !important;
 	background: repeating-linear-gradient(-45deg, rgb(71, 84, 156), #7d8bae 10px, #7d8bae 10px, rgb(71, 84, 156) 20px) !important;
 	padding: 10px !important;
@@ -24,25 +46,37 @@ header a, nav a {
 	color: #ffffff;
 }
 /* ヘッダー内見出し */
-header h1 {
-	font-size: 25pt;
-	margin: 10px auto;
-}
+/*header h1 {*/
+/*	font-size: 25pt;*/
+/*	margin: 10px auto;*/
+/*}*/
 
 h1 {
 	font-size: 20pt;
 	margin: 10px auto;
+	color: #668ad8;
 }
 
 /* 仕切り線 */
 hr {
 	border-top: 1px dashed #7d8bae;
 }
+
+.ttl_background6 {
+  font-weight: bold;
+  padding: 0.5em 1em;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #b2d3e4;
+  box-shadow: 0 0 0 10px #b2d3e4;
+  border-top: 2px dashed #fff;
+  border-bottom: 2px dashed #fff;
+}
 /* メイン */
 main {
 	background-color: white;
 	min-height: 50px;
-	padding: 20px;
+	padding: 1px;
 }
 /* 表線 */
 table, th, td {
@@ -52,7 +86,7 @@ table, th, td {
 /* 表 */
 table {
     margin: 5px auto;
-    min-width: 800px;
+    min-width: 900px;
 }
 /* 表見出しセル */
 table th {
@@ -60,21 +94,35 @@ table th {
 	color: #ffffff;
 }
 /* 送信ボタン */
-button {
-	margin: 2px;
-	padding: 5px 20px;
-	background-color: #2DFF57;
-	color: #ffffff;
-	border: none;
-	width:150px;
-	cursor: pointer;
-	border-radius: 15px;
-}
+/*button {*/
+/*	margin: 2px;*/
+/*	padding: 5px 20px;*/
+/*	background-color: #2DFF57;*/
+/*	color: #ffffff;*/
+/*	border: none;*/
+/*	width:150px;*/
+/*	cursor: pointer;*/
+/*	border-radius: 15px;*/
+/*}*/
 /* 送信ボタン(マウスオーバー時) */
-button:hover {
-	background-color: #CCFF99;
+/*button:hover {*/
+/*	background-color: #CCFF99;*/
+/*}*/
+button {
+  display: inline-block;
+  padding: 1px 20px;
+  text-decoration: none;
+  background: #668ad8;
+  color: #FFF;
+  border-radius: 4px;
+  box-shadow: 0px 0px 0px 5px #668ad8;
+  border: dashed 1px #FFF;
+  cursor: pointer;
 }
-
+button:hover {
+  border: dotted 1px #FFF;
+  background-color: rgb(56, 105, 207);
+}
 
 /*消す可能性高いチェックボックス*/
 /* チェックボックス全体 */
@@ -131,5 +179,7 @@ button:hover {
    &:checked::before {
      opacity: 1;
    }
+   
+   
 }
 
